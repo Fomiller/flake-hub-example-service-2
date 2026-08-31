@@ -4,4 +4,4 @@
 # every promotion; the value here is only what the first sync runs.
 
 image:
-  tag: 0.1.0
+  tag: 0.1.0@sha256:3343de437a705050ce6c2897ef84f8ab97aac5f55b06454891c77923f42fdb75
