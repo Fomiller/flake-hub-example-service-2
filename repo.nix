@@ -1,0 +1,35 @@
+{
+  name = "flake-hub-example-service-2";
+  namePrefix = "flake-hub-";
+  description = "A second Go service managed by flake-hub, bootstrapped from the packs";
+
+  language = "go";
+
+  github = {
+    codeowners = [ "@Fomiller" ];
+    publishImage = true;
+    publishChart = true;
+  };
+
+  service = {
+    container = true;
+    port = 8080;
+  };
+
+  infra = {
+    dopplerProject = "flake-hub-example-service-2";
+    ownerEmail = "forrestmillerj@gmail.com";
+    environments.dev = {
+      stateBucket = "fomiller-terraform-state-dev";
+    };
+  };
+
+  docs = {
+    authors = [ "Forrest Miller" ];
+    repoUrl = "https://github.com/Fomiller/flake-hub-example-service-2";
+  };
+
+  argocd = {
+    environment = "dev";
+  };
+}

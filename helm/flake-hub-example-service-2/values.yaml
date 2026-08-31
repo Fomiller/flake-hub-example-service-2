@@ -1,0 +1,31 @@
+# Written once, then it is yours. `nix run .#generate` never touches it again.
+
+replicas: 1
+
+# A hello-world until the repo has an image of its own. http-echo takes the
+# port on the command line, so it serves on whatever port the chart declares.
+image:
+  repository: hashicorp/http-echo
+  tag: "1.0"
+
+args:
+  - -listen=:8080
+  - -text=hello from flake-hub-example-service-2
+
+# Empty here on purpose. The default image is public and needs no credential.
+# An overlay pulling from a private registry names its own Secret — see
+# argocd/overlays/values.app.base.yaml.
+imagePullSecrets: []
+
+# Secrets this chart creates from the cluster's secret store. The map key names
+# the Secret, so a key here is what an `envFrom` secretRef points at.
+#
+# Empty by default: rendering the chart should not need a ClusterSecretStore to
+# exist. The overlay that deploys turns them on.
+#
+#   externalSecrets:
+#     flake-hub-example-service-2-application-secret:
+#       secretStore:
+#         name: aws-clustersecretstore
+#       remoteKey: dev/fomiller/homelab/flake-hub-example-service-2-application-secret
+externalSecrets: {}
