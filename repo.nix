@@ -19,9 +19,6 @@
   infra = {
     dopplerProject = "flake-hub-example-service-2";
     ownerEmail = "forrestmillerj@gmail.com";
-    environments.dev = {
-      stateBucket = "fomiller-terraform-state-dev";
-    };
   };
 
   docs = {
